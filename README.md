@@ -13,8 +13,8 @@ Developers who wish to modify the code can clone from ```github``` and install w
 ```bash
 python3.8 -m pip install pip --upgrade
 python3.8 -m pip install setuptools --upgrade
-git clone https://github.com/thatlarrypearson/LightRoomClassicCatalogReader.git
-cd LightRoomClassicCatalogReader
+git clone https://github.com/thatlarrypearson/LightroomClassicCatalogReader.git
+cd LightroomClassicCatalogReader
 python3.8 -m pip install -e .
 ```
 
@@ -23,10 +23,20 @@ python3.8 -m pip install -e .
 ```bash
 python3.8 -m pip install pip --upgrade
 python3.8 -m pip install setuptools --upgrade
-git clone https://github.com/thatlarrypearson/LightRoomClassicCatalogReader.git
-cd LightRoomClassicCatalogReader
+git clone https://github.com/thatlarrypearson/LightroomClassicCatalogReader.git
+cd LightroomClassicCatalogReader
 python3.8 -m pip install .
 ```
+
+### Check Installation
+
+Launch the ```python``` interpreter ```python3.8``.`
+
+```python
+from lr_reader import LightroomFileFinder
+```
+
+If this doesn't error out then you are installed!
 
 ## Lightroom Classic Catalog Image File Reader Program
 
