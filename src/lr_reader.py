@@ -1,7 +1,7 @@
 # Lightroom Reader
 import sys
-import sqlite3
 from argparse import ArgumentParser
+import sqlite3
 
 def dict_factory(cursor, row):
     d = {}
@@ -102,7 +102,6 @@ def main():
             print(record)
         else:
             print("{0}/{1}{2}".format(record['root_name'], record['folder_path_from_root'], record['file_original_name']))
-
 
 
 if __name__ == "__main__":
