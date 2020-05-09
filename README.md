@@ -14,7 +14,7 @@ Developers who wish to modify the code can clone from ```github``` and install w
 python3.8 -m pip install pip --upgrade
 python3.8 -m pip install setuptools --upgrade
 git clone https://github.com/thatlarrypearson/LightRoomClassicCatalogReader.git
-cd thatlarrypearson
+cd LightRoomClassicCatalogReader
 python3.8 -m pip install -e .
 ```
 
@@ -23,7 +23,9 @@ python3.8 -m pip install -e .
 ```bash
 python3.8 -m pip install pip --upgrade
 python3.8 -m pip install setuptools --upgrade
-python3.8 -m setup.py install
+git clone https://github.com/thatlarrypearson/LightRoomClassicCatalogReader.git
+cd LightRoomClassicCatalogReader
+python3.8 -m pip install .
 ```
 
 ## Lightroom Classic Catalog Image File Reader Program
@@ -144,7 +146,7 @@ $ sqlite3
 SQLite version 3.31.1 2020-01-27 19:55:54
 Enter ".help" for usage hints.
 Connected to a transient in-memory database.
-Use ".open FILENAME" to reopen on a persistent database.
+Use ".open FILENAME" to reopen a persistent database.
 sqlite> .shell dir
  Volume in drive L is WD-931GB
  Volume Serial Number is 46EE-388C
