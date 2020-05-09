@@ -4,6 +4,28 @@ The program, ```lr_reader.py```, will extract and output image file data from Li
 
 The program and associated class ```LightroomFileFinder``` uses the [SQLite library](https://docs.python.org/3/library/sqlite3.html) included in most Python 3 distributions.  Normally, other than Python 3.6 and newer, no additional software would need to be installed.
 
+## Installation
+
+### Developer Mode Install
+
+Developers who wish to modify the code can clone from ```github``` and install with pip.  This enables changes made in the code to appear immediately as though they were happening in the library.
+
+```bash
+python3.8 -m pip install pip --upgrade
+python3.8 -m pip install setuptools --upgrade
+git clone https://github.com/thatlarrypearson/LightRoomClassicCatalogReader.git
+cd thatlarrypearson
+python3.8 -m pip install -e .
+```
+
+### Regular Install
+
+```bash
+python3.8 -m pip install pip --upgrade
+python3.8 -m pip install setuptools --upgrade
+python3.8 -m setup.py install
+```
+
 ## Lightroom Classic Catalog Image File Reader Program
 
 ### USAGE
@@ -26,7 +48,7 @@ PS Lightroom\src>
 
 ### OUTPUT
 
-Program output is a python dictionary coverted to text.  Below is a sample line of output.
+Program output is either a python dictionary coverted to text or a file name including relative path.  Below are samples of output.
 
 #### Sample Partial Output Lines (```--full``` was not specified)
 
