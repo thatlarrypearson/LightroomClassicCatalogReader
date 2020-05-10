@@ -13,19 +13,10 @@ Developers who wish to modify the code can clone from ```github``` and install w
 ```bash
 python3.8 -m pip install pip --upgrade
 python3.8 -m pip install setuptools --upgrade
+python3.8 -m pip install wheel --upgrade
 git clone https://github.com/thatlarrypearson/LightroomClassicCatalogReader.git
 cd LightroomClassicCatalogReader
 python3.8 -m pip install -e .
-```
-
-### Regular Install
-
-```bash
-python3.8 -m pip install pip --upgrade
-python3.8 -m pip install setuptools --upgrade
-git clone https://github.com/thatlarrypearson/LightroomClassicCatalogReader.git
-cd LightroomClassicCatalogReader
-python3.8 -m pip install .
 ```
 
 ### Check Installation
@@ -36,6 +27,12 @@ Launch the ```python``` interpreter ```python3.8``.`
 from lr_reader import LightroomFileFinder
 ```
 
+An alternative to the above approach is to simply run the program as shown below.
+
+```PowerShell
+python3.8 -m lr_reader --help
+```
+
 If this doesn't error out then you are installed!
 
 ## Lightroom Classic Catalog Image File Reader Program
@@ -43,7 +40,7 @@ If this doesn't error out then you are installed!
 ### USAGE
 
 ```PowerShell
-PS Lightroom\src> python3.8 lr_reader.py --help
+PS Lightroom\src> python3.8 -m lr_reader --help
 usage: lr_reader.py [-h] [--full] [-v] path
 
 Lightroom Reader - Search for image files in Lightroom SQLite DB and output records with useful info.
@@ -137,9 +134,9 @@ The ```LightroomFileFinder``` class implements an iterator (used in ```for``` lo
 ```python
 from lr_reader import LightroomFileFinder
 
-l_reader = LightroomFileFinder('..\\..\\Pictures\\Lightroom\\Lightroom 5 Catalog.lrcat')
+lightroom_reader = LightroomFileFinder('Pictures\\Lightroom\\Lightroom 5 Catalog.lrcat')
 
-for record in l_reader():
+for record in lightroom_reader():
   print(record)
 ```
 
@@ -212,7 +209,7 @@ sqlite> .schema main.* --indent
 sqlite>
 ```
 
-> NOTE: On Windows 10, the following ```.shell dir ..``` caused my antivirus software (BitDefender) to freakout and kill ```sqlite3``` command and all of its helping tools.  Turning off the antivirus software was a temporary solution.
+> NOTE: On Windows 10, the following ```.shell dir ..``` caused BitDefender antivirus software to freakout and kill ```sqlite3``` command and all of its helping tools.  Turning off the antivirus software was a temporary solution.
 
 ```bash
 sqlite> .shell dir ..
@@ -321,7 +318,7 @@ do
 done | sed 's/F:\/Pictures\///g' | sed 's/F:\///g' | sort -u | tee image-files.txt
 ```
 
-After copying each of the Lightroom Classic ```.lrcat``` catalog files in ```C:\Users\human\Pictures\Lightroom``` to another directory, I ran the above Linux shell commands against the catalog file copies.  The goal was to clean up the data and remove duplicate file names from the combined output of multiple Lightroom catalog files.
+After copying each of the Lightroom Classic ```.lrcat``` catalog files in ```C:\Users\human\Pictures\Lightroom``` to another directory, the above Linux shell commands were run against the catalog file copies.  The goal was to clean up the data and remove duplicate file names from the combined output of multiple Lightroom catalog files.
 
 The script logic goes something like this:
 
