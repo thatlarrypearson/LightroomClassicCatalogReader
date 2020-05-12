@@ -16,6 +16,7 @@ python3.8 -m pip install setuptools --upgrade
 python3.8 -m pip install wheel --upgrade
 git clone https://github.com/thatlarrypearson/LightroomClassicCatalogReader.git
 cd LightroomClassicCatalogReader
+python3.8 setup.py sdist
 python3.8 -m pip install -e .
 ```
 
