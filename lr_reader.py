@@ -4,10 +4,7 @@ from argparse import ArgumentParser
 import sqlite3
 
 def dict_factory(cursor, row):
-    d = {}
-    for idx, col in enumerate(cursor.description):
-        d[col[0]] = row[idx]
-    return d
+    return {col[0]: row[idx] for idx, col in enumerate(cursor.description)}
 
 SQL_SELECT = """
 SELECT
@@ -43,18 +40,18 @@ class LightroomFileFinder():
         except:
             if self.verbose:
                 e = sys.exc_info()[0]
-                print("\nException: {0}".format(e), file=sys.stderr)
-                print("Invalid path, permission or lock: {0}\n".format(self.path), file=sys.stderr)
-            raise ValueError("Invalid path, permission or lock: {0}\n".format(self.path))
+                print(f"\nException: {e}", file=sys.stderr)
+                print(f"Invalid path, permission or lock: {self.path}\n", file=sys.stderr)
+            raise ValueError(f"Invalid path, permission or lock: {self.path}\n")
         try:
             self.cursor = self.db.cursor()
             self.cursor.execute(SQL_SELECT)
         except:
             if self.verbose:
                 e = sys.exc_info()[0]
-                print("\nException: {0}".format(e), file=sys.stderr)
-                print("Database/table Problem: {0}\n".format(self.path), file=sys.stderr)
-            raise RuntimeError("Database/table Problem: {0}\n".format(self.path))
+                print(f"\nException: {e}", file=sys.stderr)
+                print(f"Database/table Problem: {self.path}\n", file=sys.stderr)
+            raise RuntimeError(f"Database/table Problem: {self.path}\n")
 
         return self
 
@@ -64,17 +61,15 @@ class LightroomFileFinder():
         except:
             if self.verbose:
                 e = sys.exc_info()[0]
-                print("\nException: {0}".format(e), file=sys.stderr)
-                print("Row Fetch Problem: {0}\n".format(self.path), file=sys.stderr)
-            raise RuntimeError("Row Fetch Problem: {0}\n".format(self.path))
+                print(f"\nException: {e}", file=sys.stderr)
+                print(f"Row Fetch Problem: {self.path}\n", file=sys.stderr)
+            raise RuntimeError(f"Row Fetch Problem: {self.path}\n")
         if row is None:
             raise StopIteration
-        record = dict_factory(self.cursor, row)
-        return record
-    
+        return dict_factory(self.cursor, row)
+
     def path_to_uri(self, path):
-        uri = 'file:' + str(path) + '?mode=ro'
-        return uri
+        return 'file:' + str(path) + '?mode=ro'
 
 
 def main():
@@ -94,14 +89,14 @@ def main():
         print("path:", args['path'][0], file=sys.stderr)
         print("full:", args['full'], file=sys.stderr)
         print("verbose:", args['verbose'], file=sys.stderr)
-    
+
     lrff = LightroomFileFinder(args['path'][0], args['verbose'])
 
     for record in lrff:
         if args['full']:
             print(record)
         else:
-            print("{0}/{1}{2}".format(record['root_name'], record['folder_path_from_root'], record['file_original_name']))
+            print(f"{record['root_name']}/{record['folder_path_from_root']}{record['file_original_name']}")
 
 
 if __name__ == "__main__":

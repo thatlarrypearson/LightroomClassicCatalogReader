@@ -1,24 +1,11 @@
 from setuptools import setup, find_packages
 setup(
-    name="lr_reader",
-    version="0.1.2",
+    name="lr-reader",
+    version="0.3",
 
     packages=find_packages('src'),
-    package_dir={
-        "": "src",
-    },
-    package_data={
-        "": ["*.md",],
-    },
-
+    py_modules=['lr_reader', ],
     install_requires=[],
-
-    entry_points={
-        # 'console_scripts': [
-        #     'lr_reader=lr_reader.__main__:main',
-        # ],
-    },
-
     python_requires='>=3.6',
 
     # metadata to display on PyPI
@@ -33,7 +20,7 @@ setup(
         'Catalog', 'Database', '.lrcat', 'SQLite3',
         'Image', 'File', 'Reader',
     ],
-    url="https://github.com/thatlarrypearson/LightRoomClassicCatalogReader",   # project home page, if any
+    url="https://github.com/thatlarrypearson/LightRoomClassicCatalogReader",
     project_urls={
         "Bug Tracker": "https://github.com/thatlarrypearson/LightRoomClassicCatalogReader",
         "Documentation": "https://github.com/thatlarrypearson/LightRoomClassicCatalogReader",
@@ -45,5 +32,4 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
-    # could also include long_description, download_url, etc.
 )
