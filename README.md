@@ -305,7 +305,7 @@ SELECT
 FROM AgLibraryRootFolder root
 JOIN AgLibraryFolder folder ON root.id_local = folder.rootFolder
 JOIN AgLibraryFile file ON folder.id_local = file.folder
-ORDER BY ORDER BY root.name, folder.pathFromRoot, file.originalFilename;
+ORDER BY root.name, folder.pathFromRoot, file.originalFilename;
 ```
 
 ## Example Linux/Mac Shell Commands To Find All Image File Names Contained in Multiple Lightroom Classic Catalogs
